@@ -1,5 +1,6 @@
 package com.example.gestionecoles.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.util.HashSet;
@@ -31,6 +32,7 @@ public class School {
     private Timestamp createdAt;
 
     @OneToOne(mappedBy = "school", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Coordinates coordinates;
 
     @ManyToMany

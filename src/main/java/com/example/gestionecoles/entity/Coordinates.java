@@ -1,5 +1,6 @@
 package com.example.gestionecoles.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 // Coordinates.java
@@ -17,6 +18,7 @@ public class Coordinates {
 
     @OneToOne
     @JoinColumn(name = "school_id", nullable = false)
+    @JsonBackReference
     private School school;
 
     public Integer getId() {
