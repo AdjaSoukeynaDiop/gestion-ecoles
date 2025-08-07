@@ -23,7 +23,6 @@ public class ChatMessage {
     private Timestamp timestamp;
     private String suggestions;
 
-    // === Getters and Setters ===
     public Integer getId() {
         return id;
     }

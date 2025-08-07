@@ -41,51 +41,123 @@ public class School {
     )
     private Set<Level> levels = new HashSet<>();
 
+    public Integer getId() {
+        return id;
+    }
+
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public SchoolType getType() {
+        return type;
+    }
+
+    public void setType(SchoolType type) {
+        this.type = type;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getRegion() {
+        return region;
     }
 
     public void setRegion(String region) {
         this.region = region;
     }
 
+    public Integer getStudents() {
+        return students;
+    }
+
     public void setStudents(Integer students) {
         this.students = students;
+    }
+
+    public Float getRating() {
+        return rating;
     }
 
     public void setRating(Float rating) {
         this.rating = rating;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public Integer getEstablished() {
+        return established;
+    }
+
     public void setEstablished(Integer established) {
         this.established = established;
+    }
+
+    public String getFacilities() {
+        return facilities;
     }
 
     public void setFacilities(String facilities) {
         this.facilities = facilities;
     }
 
+    public String getImages() {
+        return images;
+    }
+
     public void setImages(String images) {
         this.images = images;
     }
 
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public Set<Level> getLevels() {
+        return levels;
+    }
+
+    public void setLevels(Set<Level> levels) {
+        this.levels = levels;
     }
 }
