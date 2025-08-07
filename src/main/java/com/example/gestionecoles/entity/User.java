@@ -1,7 +1,7 @@
 package com.example.gestionecoles.entity;
 
 import jakarta.persistence.*;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 // User.java
 @Entity
