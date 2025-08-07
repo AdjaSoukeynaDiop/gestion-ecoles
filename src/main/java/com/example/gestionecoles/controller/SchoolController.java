@@ -1,7 +1,7 @@
 package com.example.gestionecoles.controller;
 
 import com.example.gestionecoles.entity.School;
-import com.example.gestionecoles.repository.SchoolRepository;
+import com.example.gestionecoles.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,35 +13,35 @@ import java.util.List;
 public class SchoolController {
 
     @Autowired
-    private SchoolRepository schoolRepository;
+    private SchoolService schoolService;
 
     @GetMapping
     public List<School> getAllSchools() {
-        return schoolRepository.findAll();
+        return schoolService.findAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<School> getSchoolById(@PathVariable Integer id) {
-        return schoolRepository.findById(id)
+        return schoolService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public School createSchool(@RequestBody School school) {
-        return schoolRepository.save(school);
+        return schoolService.save(school);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<School> updateSchool(@PathVariable Integer id, @RequestBody School school) {
-        return schoolRepository.findById(id).map(existing -> {
+        return schoolService.findById(id).map(existing -> {
             school.setId(id);
-            return ResponseEntity.ok(schoolRepository.save(school));
+            return ResponseEntity.ok(schoolService.save(school));
         }).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public void deleteSchool(@PathVariable Integer id) {
-        schoolRepository.deleteById(id);
+        schoolService.deleteSchool(id);
     }
 }

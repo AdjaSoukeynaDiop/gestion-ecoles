@@ -11,10 +11,16 @@ import java.util.Optional;
 @Service
 public class SchoolService {
     @Autowired
-    private SchoolRepository repo;
-    public List<School> findAll() { return repo.findAll(); }
-    public Optional<School> findById(Integer id) { return repo.findById(id); }
-    public School save(School s) { return repo.save(s); }
-    public void delete(Integer id) { repo.deleteById(id); }
+    private SchoolRepository schoolRepository;
+    public List<School> findAll() { return schoolRepository.findAll(); }
+    public Optional<School> findById(Integer id) { return schoolRepository.findById(id); }
+    public School save(School s) { return schoolRepository.save(s); }
+    public School updateSchool(Integer id, School school) {
+        school.setId(id);
+        return schoolRepository.save(school);
+    }
+    public void deleteSchool(Integer id) {
+        schoolRepository.deleteById(id);
+    }
 }
 
