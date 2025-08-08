@@ -1,8 +1,10 @@
 package com.example.gestionecoles.controller;
 
 import com.example.gestionecoles.entity.School;
+import com.example.gestionecoles.entity.SchoolRequestDto;
 import com.example.gestionecoles.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +30,9 @@ public class SchoolController {
     }
 
     @PostMapping
-    public School createSchool(@RequestBody School school) {
-        return schoolService.save(school);
+    public ResponseEntity<School> createSchool(@RequestBody SchoolRequestDto dto) {
+        School created = schoolService.createSchool(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @PutMapping("/{id}")
