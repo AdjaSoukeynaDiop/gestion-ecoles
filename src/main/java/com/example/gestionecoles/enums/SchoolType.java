@@ -1,4 +1,4 @@
-package com.example.gestionecoles.entity;
+package com.example.gestionecoles.enums;
 
 // SchoolType.java
 public enum SchoolType {

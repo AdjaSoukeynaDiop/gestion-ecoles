@@ -2,13 +2,14 @@
 INSERT INTO level (name) VALUES ('PRIMARY'), ('SECONDARY'), ('HIGH_SCHOOL');
 
 -- Insertion des utilisateurs
-INSERT INTO users (name, email, role, phone, created_at, favorites) VALUES
-                                                                        ('Aminata Diallo', 'aminata.diallo@email.com', 'USER', '+221 77 123 45 67', '2024-01-15 10:30:00', '1,2'),
-                                                                        ('Moussa Fall', 'moussa.fall@email.com', 'USER', '+221 78 234 56 78', '2024-02-20 14:15:00', '1'),
-                                                                        ('Fatou Seck', 'fatou.seck@email.com', 'ADMIN', '+221 77 345 67 89', '2024-01-01 08:00:00', '');
+INSERT INTO users (name, email, password, role, phone, created_at, favorites) VALUES
+                                                                        ('Aminata Diallo', 'aminata.diallo@email.com', '$2a$10$N9qo8uLOickgx2ZMRZoMye', 'USER', '+221 77 123 45 67', '2024-01-15 10:30:00', '1,2'),
+                                                                        ('Moussa Fall', 'moussa.fall@email.com', '$2a$10$N9qo8uLOickgx2ZMRZoMye', 'USER', '+221 78 234 56 78', '2024-02-20 14:15:00', '1'),
+                                                                        ('Fatou Seck', 'fatou.seck@email.com', '$2a$10$N9qo8uLOickgx2ZMRZoMye', 'ADMIN', '+221 77 345 67 89', '2024-01-01 08:00:00', '');
 
 -- Insertion des écoles (sans coordinates_id)
-INSERT INTO school (id, name, type, address, region, students, rating, phone, email, established, facilities, images) VALUES
+INSERT INTO school (id, name, type, address
+                   , region, students, rating, phone, email, established, facilities, images) VALUES
                                                                                                                           (1, 'Lycée Lamine Guèye', 'PUBLIC', 'Avenue Lamine Guèye, Dakar', 'Dakar', 1200, 4.2, '+221 33 821 23 45', 'lycee.lamine.gueye@education.sn', 1950,
                                                                                                                            'Bibliothèque,Laboratoire de sciences,Terrain de sport,Cantine',
                                                                                                                            'school1_front.jpg,school1_classroom.jpg,school1_lab.jpg'),
@@ -33,10 +34,10 @@ INSERT INTO school_level (school_id, level_id) VALUES
                                                    (3, 3);  -- aussi HIGH_SCHOOL
 
 -- Insertion des avis
-INSERT INTO review (user_id, school_id, user_name, rating, comment, date) VALUES
-                                                                              (1, 1, 'Aminata Diallo', 4, 'Très bon établissement avec des professeurs compétents.', '2024-03-15 16:45:00'),
-                                                                              (2, 1, 'Moussa Fall', 5, 'Excellente école, je la recommande vivement!', '2024-03-20 11:30:00'),
-                                                                              (1, 2, 'Aminata Diallo', 4, 'Belle école privée avec de bonnes infrastructures.', '2024-03-25 09:15:00');
+INSERT INTO review (user_id, school_id, rating, comment, date) VALUES
+                                                                              (1, 1, 4, 'Très bon établissement avec des professeurs compétents.', '2024-03-15 16:45:00'),
+                                                                              (2, 1, 5, 'Excellente école, je la recommande vivement!', '2024-03-20 11:30:00'),
+                                                                              (1, 2, 4, 'Belle école privée avec de bonnes infrastructures.', '2024-03-25 09:15:00');
 
 -- Insertion des messages de chat
 INSERT INTO chat_message (user_id, type, content, timestamp, suggestions) VALUES

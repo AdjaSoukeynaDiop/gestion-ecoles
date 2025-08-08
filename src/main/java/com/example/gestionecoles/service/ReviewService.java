@@ -3,6 +3,8 @@ package com.example.gestionecoles.service;
 import com.example.gestionecoles.entity.Review;
 import com.example.gestionecoles.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,4 +18,7 @@ public class ReviewService {
     public Optional<Review> findById(Integer id) { return repo.findById(id); }
     public Review save(Review r) { return repo.save(r); }
     public void delete(Integer id) { repo.deleteById(id); }
+    public Page<Review> findBySchoolId(Integer schoolId, Pageable pageable) {
+        return repo.findBySchoolIdOrderByDateDesc(schoolId, pageable);
+    }
 }
