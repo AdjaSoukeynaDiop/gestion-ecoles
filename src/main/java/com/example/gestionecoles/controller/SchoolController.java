@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -68,8 +69,8 @@ public class SchoolController {
     }
 
     @GetMapping
-    public Page<School> getAllSchools(Pageable pageable) {
-        return schoolService.findAll(pageable);
+    public List<School> getAllSchools() {
+        return schoolService.findAll();
     }
 
     @GetMapping("/search")

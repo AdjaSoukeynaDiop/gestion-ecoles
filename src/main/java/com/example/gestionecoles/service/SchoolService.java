@@ -24,7 +24,9 @@ public class SchoolService {
     @Autowired
     private LevelRepository levelRepository;
     
-    public List<School> findAll() { return schoolRepository.findAll(); }
+    public List<School> findAll() {
+        return schoolRepository.findAll();
+    }
     
     public Page<School> findAll(Pageable pageable) { return schoolRepository.findAll(pageable); }
     public Optional<School> findById(Integer id) { return schoolRepository.findById(id); }
