@@ -1,9 +1,11 @@
 package com.example.gestionecoles.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 // Level.java
 @Entity
+@Data
 @Table(name = "level")
 public class Level {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,20 +14,6 @@ public class Level {
     @Column(unique = true, nullable = false)
     private String name;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
 
