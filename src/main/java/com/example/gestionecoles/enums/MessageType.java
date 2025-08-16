@@ -1,4 +1,4 @@
-package com.example.gestionecoles.entity;
+package com.example.gestionecoles.enums;
 
 // MessageType.java
 public enum MessageType {

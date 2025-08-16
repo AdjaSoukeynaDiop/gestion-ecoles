@@ -1,13 +1,20 @@
 package com.example.gestionecoles.entity;
 
+import com.example.gestionecoles.enums.SchoolType;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import lombok.Data;
+
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 // School.java
 @Entity
+@Data
 @Table(name = "school")
 public class School {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,11 +25,23 @@ public class School {
     @Enumerated(EnumType.STRING)
     private SchoolType type;
 
+    @NotBlank(message = "Address is required")
     private String address;
+    
+    @NotBlank(message = "Region is required")
     private String region;
+    
+    @Min(value = 1, message = "Number of students must be at least 1")
     private Integer students;
+    
+    @DecimalMin(value = "0.0", message = "Rating must be between 0 and 5")
+    @DecimalMax(value = "5.0", message = "Rating must be between 0 and 5")
     private Float rating;
+    
     private String phone;
+    
+    @Email(message = "Email should be valid")
+    @Column(unique = true)
     private String email;
     private Integer established;
     private String facilities;
@@ -43,123 +62,9 @@ public class School {
     )
     private Set<Level> levels = new HashSet<>();
 
-    public Integer getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Review> reviews = new ArrayList<>();
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public SchoolType getType() {
-        return type;
-    }
-
-    public void setType(SchoolType type) {
-        this.type = type;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public Integer getStudents() {
-        return students;
-    }
-
-    public void setStudents(Integer students) {
-        this.students = students;
-    }
-
-    public Float getRating() {
-        return rating;
-    }
-
-    public void setRating(Float rating) {
-        this.rating = rating;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getEstablished() {
-        return established;
-    }
-
-    public void setEstablished(Integer established) {
-        this.established = established;
-    }
-
-    public String getFacilities() {
-        return facilities;
-    }
-
-    public void setFacilities(String facilities) {
-        this.facilities = facilities;
-    }
-
-    public String getImages() {
-        return images;
-    }
-
-    public void setImages(String images) {
-        this.images = images;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Coordinates getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public Set<Level> getLevels() {
-        return levels;
-    }
-
-    public void setLevels(Set<Level> levels) {
-        this.levels = levels;
-    }
 }
